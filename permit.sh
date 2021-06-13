@@ -11,7 +11,7 @@ if [ $i -lt 10 ]
 then
 chgrp 3year /home/sysAd_0$i #add to group,if 3year owns 2nd year home directories,that makes it simple to give all of 3year and 4year read permissions
 chmod g+r /home/sysAd_0$i #similarly,repeat 4year owns 3rd year students home dirs and qhead owns 4th year home dirs
-chgrp 3year /home/appDev_0$i 
+chgrp 3year /home/appDev_0$i #by default,people who are not in 3year can't just see a random 2nd year directory,except for their own due to default permissions.
 chmod g+r /home/appDev_0$i 
 chgrp 3year /home/webDev_0$i 
 chmod g+r /home/webDev_0$i   
