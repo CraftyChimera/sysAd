@@ -1,5 +1,5 @@
 #!/bin/bash
-grep $(date +%F) /home/drake/Desktop/future.txt >> /home/Jay_Jay/schedule.txt
+grep $(date +%F) ./future.txt >> /home/Jay_Jay/schedule.txt
 for i in {1..30}
 do
 if [ $i -lt 10 ]
