@@ -3,10 +3,10 @@
 groupadd 2year
 groupadd 3year
 groupadd 4year
-groupadd qhead
+groupadd qhead #add the groups nyear is made up of people who are in nth,(n+1)th or (n+2)th year
 useradd -m Jay_Jay
 usermod -aG 2year,3year,4year,qhead Jay_Jay
-passwd -d Jay_Jay
+passwd -d Jay_Jay #make sure the user can login
 for i in {1..30}
 do
 if [ $i -lt 10 ]
