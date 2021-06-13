@@ -1,1 +1,1 @@
-alias genuser './genuser.sh'
+alias genuser='./genuser.sh'
