@@ -1,13 +1,13 @@
 #!/bin/bash
-if [ $(grep $(date +%F) /home/drake/Desktop/future.txt | wc -l) -gt 0 ]
+if [ $(grep $(date +%F) ./future.txt | wc -l) -gt 0 ] #check if there is a meeting today. This script should be run on startup,so should be placed in /etc/initd
 then
-grep $(date +%F) /home/drake/Desktop/future.txt > /home/Jay_Jay/schedule.txt
+grep $(date +%F) ./future.txt > /home/Jay_Jay/schedule.txt#if there is a meeting today,update. else let it be
 fi
 for i in {1..30}
 do
 if [ $i -lt 10 ]
 then
-ln /home/Jay_Jay/schedule.txt /home/sysAd_0$i/
+ln /home/Jay_Jay/schedule.txt /home/sysAd_0$i/ #create hardlinks so that we really only have to care about only one file
 ln /home/Jay_Jay/schedule.txt /home/webDev_0$i/
 ln /home/Jay_Jay/schedule.txt /home/appDev_0$i/
 else
