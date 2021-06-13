@@ -2,7 +2,7 @@ d=${1:-2019-09-27}
 a=${2:-2021-10-27}  #today is after the last entry in the file. so any random date after last entry will give the same result
 y=$(date --date="$a+1 day" +%Y-%m-%d)
 while [ "$d" != "$y" ]; do  #loop for iterating through dates
- if [ $(grep $d ./attendance.txt | wc -l) -gt 0 ] #check if there is a meeting on a day. If so,count the number of people who don't appear
+ if [ $(grep $d ./attendance.txt | wc -l) -gt 0 ] #check if there is a meeting on a day. If so,note people who don't appear
  then
  
   for i in {1..9}
