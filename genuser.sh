@@ -19,7 +19,7 @@ then
    usermod -aG 2year appDev_0$i
    useradd -m webDev_0$i
    passwd -d webDev_0$i
-   usermod -aG 2year webDev_0$i
+   usermod -aG 2year webDev_0$i 
 else
    useradd -m sysAd_$i
    passwd -d sysAd_$i
@@ -28,7 +28,7 @@ else
    then usermod -aG 3year sysAd_$i 
    fi
    if [ $i -gt 20 ] 
-   then usermod -aG 4year sysAd_$i 
+   then usermod -aG 4year sysAd_$i #the main idea is to add 4th years to 3year group so that they have all the power a 3rd year is supposed to have,along with their own powers
    fi
    useradd -m appDev_$i
    passwd -d appDev_$i
