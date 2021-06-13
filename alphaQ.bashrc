@@ -1,0 +1,1 @@
+alias genuser './genuser.sh'
