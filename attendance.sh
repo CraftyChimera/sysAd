@@ -1,3 +1,4 @@
+#!/bin/bash
 d=${1:-2019-09-27}
 a=${2:-"$(date +%F)"}  
 y=$(date --date="$a+1 day" +%Y-%m-%d)
