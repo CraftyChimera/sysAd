@@ -1,5 +1,5 @@
 d=${1:-2019-09-27}
-a=${2:-2021-10-27}  #today is after the last entry in the file. so any random date after last entry will give the same result
+a=${2:-"$(date +%F)"}  
 y=$(date --date="$a+1 day" +%Y-%m-%d)
 while [ "$d" != "$y" ]; do  #loop for iterating through dates
  if [ $(grep $d ./attendance.txt | wc -l) -gt 0 ] #check if there is a meeting on a day. If so,note people who don't appear
@@ -40,5 +40,5 @@ while [ "$d" != "$y" ]; do  #loop for iterating through dates
  
  fi 
  
-  d=$(date -I --date "$d + 1 day")
+  d=$(date --date "$d + 1 day" +%Y-%m-%d)
   done
