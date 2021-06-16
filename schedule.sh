@@ -1,5 +1,6 @@
 #!/bin/bash
-if [ $(grep $(date +%F) ./future.txt | wc -l) -gt 0 ] #check if there is a meeting today. This script should be run on startup,so should be placed in /etc/initd
+if [ $(grep $(date +%F) ./future.txt | wc -l) -gt 0 ] #check if there is a meeting today.
+# This script should be run on startup,so edit the appropriate file to get this run on startup
 then
 grep $(date +%F) ./future.txt > /home/Jay_Jay/schedule.txt #if there are meetings today,update. else let it be
 fi
