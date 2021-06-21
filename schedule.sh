@@ -1,14 +1,18 @@
 #!/bin/bash
-if [ $(grep $(date +%F) ./future.txt | wc -l) -gt 0 ] #check if there is a meeting today.
-# This script should be run on startup,so edit the appropriate file to get this run on startup
+if [ $(grep "@reboot $(readlink -f $0) &" /var/spool/cron/crontabs/Jay_Jay|wc -l) -lt 1 ] #check if there is already an entry in crontab
 then
-grep $(date +%F) ./future.txt > /home/Jay_Jay/schedule.txt #if there are meetings today,update. else let it be
-fi
+
+crontab -u Jay_Jay -l > cron_new
+echo "@reboot $(readlink -f $0) &" >> cron_new
+crontab -u Jay_Jay cron_new
+rm cron_new       #add startup at boot condition
+echo " " > /home/Jay_Jay/schedule.txt
+
 for i in {1..30}
 do
 if [ $i -lt 10 ]
 then
-ln /home/Jay_Jay/schedule.txt /home/sysAd_0$i/ #create hardlinks so that we really only have to care about only one file
+ln /home/Jay_Jay/schedule.txt /home/sysAd_0$i/
 ln /home/Jay_Jay/schedule.txt /home/webDev_0$i/
 ln /home/Jay_Jay/schedule.txt /home/appDev_0$i/
 else
@@ -17,3 +21,11 @@ ln /home/Jay_Jay/schedule.txt /home/webDev_$i/
 ln /home/Jay_Jay/schedule.txt /home/appDev_$i/
 fi
 done
+
+fi
+
+
+if [ $(grep $(date +%F) ./future.txt | wc -l) -gt 0 ]
+then
+grep $(date +%F) ./future.txt > /home/Jay_Jay/schedule.txt
+fi
