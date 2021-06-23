@@ -1,10 +1,9 @@
 #!/bin/bash
-if [ $(grep "@reboot $(readlink -f $0) &" /var/spool/cron/crontabs/Jay_Jay|wc -l) -lt 1 ] #check if there is already an entry in crontab
-then
-
-crontab -u Jay_Jay -l > cron_new
+if [ $(grep "@reboot $(readlink -f $0) &" /var/spool/cron/crontabs/root|wc -l) -lt 1 ] #check if there is already an entry in crontab
+then                                                                                   #Saving it to root crontab because root can access it's own crontab and grep doesn't fail and make if statement vacuously true because of lack of permissions
+crontab -u root -l > cron_new #$readlink -f $0 outputs the location of this script
 echo "@reboot $(readlink -f $0) &" >> cron_new
-crontab -u Jay_Jay cron_new
+crontab -u root cron_new
 rm cron_new       #add startup at boot condition
 echo " " > /home/Jay_Jay/schedule.txt
 
